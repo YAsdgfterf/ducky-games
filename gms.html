@@ -29,7 +29,27 @@
 				padding: 0;
 				box-sizing: border-box;
 				}
-				
+				.nav {
+    display: flex;
+    gap: 20px; /* Space between the buttons */
+}
+
+.nav-button {
+    background: none; /* No background for buttons */
+    color: #fff; /* White text color */
+    font-size: 1rem; /* Font size */
+    font-weight: 500; /* Font weight */
+    padding: 10px 15px; /* Padding around the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.nav-button:hover {
+    color: rgba(255, 165, 0, 0.7); /* Change text color on hover */
+}
 				body {
 				background-color: #000;
 				color: var(--text-color);
@@ -662,7 +682,13 @@
 
 <body>
 	<header class="header">
-		<h1 class="title">Ducky Games</h1>
+    <div class="title"><i class="bi bi-duck"></i> Ducky Games</div>
+    <nav class="nav">
+        <a href="/index" class="nav-button">Home</a>
+        <a href="/gms" class="nav-button">Games</a>
+        <a href="/apps" class="nav-button">Apps</a>
+        <a href="/sports" class="nav-button">Sports</a>
+    </nav>
 		<div class="proxied-container">
 			Proxied?
 			<label class="checkbox-container">
