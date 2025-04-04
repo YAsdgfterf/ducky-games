@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proxy</title>
+  <script>
+    function redirect() {
+      const input = document.getElementById('input').value.trim();
+      let redirectUrl = '';
+
+      if (input.startsWith('https://')) {
+        redirectUrl = `/active/embed.html?url=${encodeURIComponent(input)}`;
+      } else {
+        const searchUrl = `https://duckduckgo.com/?t=h_&q=${encodeURIComponent(input)}&ia=web`;
+        redirectUrl = `/active/embed.html?url=${encodeURIComponent(searchUrl)}`;
+      }
+
+      window.location.href = redirectUrl;
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        redirect();
+      }
+    }
+  </script>
+</head>
+<body style="font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <h2>Type a URL (https://...) or a Search Query</h2>
+  <input type="text" id="input" onkeypress="handleKeyPress(event)" placeholder="Enter URL or search..." style="width: 300px; padding: 10px; font-size: 16px;" />
+  <button onclick="redirect()" style="margin-top: 10px; padding: 10px 20px; font-size: 16px;">Go</button>
+</body>
+</html>
