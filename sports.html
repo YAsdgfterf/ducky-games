@@ -2,110 +2,101 @@
 <html>
 
 <head>
-    <title>Ducky Games</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            background-color: #222; /* Dark background for contrast */
-        }
+	<title>Sports -Ducky Games</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			display: flex;
+			margin: 0;
+			height: 100vh;
+			overflow: hidden;
+		}
 
-        #guide {
-            width: 250px;
-            background-color: #ff9800; /* Orange background for the guide */
-            color: white;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
+		#guide {
+			width: 250px;
+			background-color: #333;
+			color: white;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+		}
 
-        #search-bar {
-            padding: 10px;
-            background-color: #f57c20; /* A slightly darker orange */
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+		#search-bar {
+			padding: 10px;
+			background-color: #444;
+			position: sticky;
+			top: 0;
+			z-index: 10;
+		}
 
-        #search-bar input {
-            width: calc(100% - 22px);
-            padding: 8px;
-            background-color: #f57c20; /* A slightly darker input background */
-            border: none;
-            color: white;
-        }
+		#search-bar input {
+			width: calc(100% - 22px);
+			padding: 8px;
+			background-color: #555;
+			border: none;
+			color: white;
+		}
 
-        #guide ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            overflow-y: auto;
-        }
+		#guide ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			overflow-y: auto;
+		}
 
-        #guide li {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid #e65100; /* A darker orange for divider */
-        }
+		#guide li {
+			padding: 10px;
+			cursor: pointer;
+			border-bottom: 1px solid #555;
+		}
 
-        #guide li:hover {
-            background-color: #ffb74d; /* Light orange for hover effect */
-        }
+		#guide li:hover {
+			background-color: #555;
+		}
 
-        #player {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background-color: #333; /* Dark background for the player */
-        }
+		#player {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
 
-        #embedded-player {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+		#embedded-player {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
 
-        #error-message {
-            display: none;
-            background-color: #fdd;
-            padding: 10px;
-            border: 1px solid red;
-            margin: 10px;
-        }
-
-        h1 {
-            color: #ff9800; /* Orange color for title */
-            text-align: center;
-            margin: 20px 0;
-        }
-    </style>
+		#error-message {
+			display: none;
+			background-color: #fdd;
+			padding: 10px;
+			border: 1px solid red;
+			margin: 10px;
+		}
+	</style>
 </head>
 
 <body>
-    <div id="guide">
-        <h1>Ducky Games</h1>
-        <div id="search-bar">
-            <input type="text" id="channel-search" placeholder="Search channels...">
-        </div>
-        <ul></ul>
-    </div>
-    <div id="player">
-        <div id="error-message"></div>
-        <iframe allow='encrypted-media' width='640' height='360' scrolling='no' frameborder='0' allowfullscreen id="embedded-player"></iframe>
-    </div>
+	<div id="guide">
+		<div id="search-bar">
+			<input type="text" id="channel-search" placeholder="Search channels...">
+  </div>
+			<ul></ul>
+		</div>
+		<div id="player">
+			<div id="error-message"></div>
+			<iframe allow='encrypted-media' width='640' height='360' scrolling='no' frameborder='0' allowfullscreen id="embedded-player" allowfullscreen></iframe>
+		</div>
 
-    <script>
-        const guideList = document.querySelector('#guide ul');
-        const embeddedPlayer = document.getElementById('embedded-player');
-        const errorMessage = document.getElementById('error-message');
-        const searchInput = document.getElementById('channel-search');
-        let allChannels = [];
+		<script>
+			const guideList = document.querySelector('#guide ul');
+const embeddedPlayer = document.getElementById('embedded-player');
+const errorMessage = document.getElementById('error-message');
+const searchInput = document.getElementById('channel-search');
+let allChannels = [];
 
-        // Hardcoded channel list (URLs only)
-        const channelUrls = [
+// Hardcoded channel list (URLs only)
+const channelUrls = [
   "SkySportsMainEvent[UK]",
   "SkySportsNews[UK]",
   "SkySportsAction[UK]",
@@ -505,58 +496,59 @@
   "RallyTV[UK]"
 ];
 
-        function generateChannelName(url) {
-            return url;
-        }
+function generateChannelName(url) {
+  return url;
+}
 
-        function parseChannels(urlData) {
-            const channels = [];
-            urlData.forEach(url => {
-                const channelName = generateChannelName(url);
-                const link = `/active/embed?url=https://topembed.pw/channel/${channelName}`;
-                channels.push({ name: channelName, url: link });
-            });
-            return channels;
-        }
+function parseChannels(urlData) {
+  const channels = [];
+  urlData.forEach(url => {
+    const channelName = generateChannelName(url);
+    const link = `/active/embed?url=https://topembed.pw/channel/${channelName}`;
+    channels.push({ name: channelName, url: link });
+  });
+  return channels;
+}
 
-        function displayChannels(channels) {
-            guideList.innerHTML = '';
-            channels.forEach(channel => {
-                const li = document.createElement('li');
-                li.textContent = channel.name;
-                li.addEventListener('click', () => {
-                    let streamUrl = channel.url;
-                    if (streamUrl.startsWith('http://')) {
-                        streamUrl = streamUrl.replace('http://', 'https://');
-                    }
-                    embedStream(streamUrl);
-                });
-                guideList.appendChild(li);
-            });
-        }
+function displayChannels(channels) {
+  guideList.innerHTML = '';
+  channels.forEach(channel => {
+    const li = document.createElement('li');
+    li.textContent = channel.name;
+    li.addEventListener('click', () => {
+      let streamUrl = channel.url;
+      if (streamUrl.startsWith('http://')) {
+          streamUrl = streamUrl.replace('http://', 'https://');
+      }
+      embedStream(streamUrl);
+    });
+    guideList.appendChild(li);
+  });
+}
 
-        function embedStream(streamUrl) {
-            embeddedPlayer.src = streamUrl;
+function embedStream(streamUrl) {
+  embeddedPlayer.src = streamUrl;
 
-            embeddedPlayer.onerror = function () {
-                console.error('Embedded player error:', embeddedPlayer.error);
-                errorMessage.textContent = 'Embedded player error: ' + embeddedPlayer.error;
-                errorMessage.style.display = 'block';
-            };
-        }
+  embeddedPlayer.onerror = function() {
+    console.error('Embedded player error:', embeddedPlayer.error);
+    errorMessage.textContent = 'Embedded player error: ' + embeddedPlayer.error;
+    errorMessage.style.display = 'block';
+  };
+}
 
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            const filteredChannels = allChannels.filter(channel =>
-                channel.name.toLowerCase().includes(searchTerm)
-            );
-            displayChannels(filteredChannels);
-        });
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredChannels = allChannels.filter(channel =>
+    channel.name.toLowerCase().includes(searchTerm)
+  );
+  displayChannels(filteredChannels);
+});
 
-        // Load the hardcoded channels
-        allChannels = parseChannels(channelUrls);
-        displayChannels(allChannels);
-    </script>
+// Load the hardcoded channels
+allChannels = parseChannels(channelUrls);
+displayChannels(allChannels);
+
+		</script>
 </body>
 
 </html>
