@@ -69,6 +69,19 @@
             z-index: -7;
         }
 
+        /* Notification Box */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 0, 0, 0.8); /* Red color with opacity */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            z-index: 200;
+            font-size: 1.2rem; /* Increase font size */
+        }
+
         @keyframes pulse {
             0%, 100% {
                 opacity: 0.6;
@@ -613,6 +626,9 @@
         <div class="floating-item"></div>
     </div>
 
+    <!-- Notification Box -->
+    <div class="notification">hot lava and chicken</div>
+
     <!-- Main Content -->
     <div class="content">
         <!-- Navigation -->
@@ -634,9 +650,10 @@
                 <a href="/gms" class="nav-link has-tooltip">
                     Games
                     <span class="tooltip">Ducky Games</span>
-                               <a href="/gms" class="nav-link has-tooltip">
+                </a>
+                <a href="/gms" class="nav-link has-tooltip">
                     Home
-                    <span class="tooltip">your already on this page</span>
+                    <span class="tooltip">you're already on this page</span>
                 </a>
             </div>
             <div class="nav-buttons">
