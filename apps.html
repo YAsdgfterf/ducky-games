@@ -715,7 +715,7 @@
 
         function openGameInIframe(url) {
             iframeModal.style.display = 'flex'; // Show the fullscreen modal
-            gameIframe.src = `/active/embed.html?url=https://duckygamesilove.netlify.app/active/embed.html?url=${url}`; // Proxied URL
+            gameIframe.src = `/active/embed.html?url=${url}`; // Proxied URL
         }
 
         closeIframeModalBtn.addEventListener('click', function () {
