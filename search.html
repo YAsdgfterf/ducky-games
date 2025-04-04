@@ -1,124 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Proxy</title>
-  <script>
-    function redirect() {
-      const input = document.getElementById('input').value.trim();
-      let redirectUrl = '';
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy</title>
+    <script>
+        function redirect() {
+            const input = document.getElementById('input').value.trim();
+            let redirectUrl = '';
 
-      if (input.startsWith('https://')) {
-        redirectUrl = `/active/embed.html?url=${encodeURIComponent(input)}`;
-      } else {
-        const searchUrl = `https://duckduckgo.com/?t=h_&q=${encodeURIComponent(input)}&ia=web`;
-        redirectUrl = `/active/embed.html?url=${encodeURIComponent(searchUrl)}`;
-      }
+            if (input.startsWith('https://')) {
+                redirectUrl = `/active/embed.html?url=${encodeURIComponent(input)}`;
+            } else {
+                const searchUrl = `https://duckduckgo.com/?t=h_&q=${encodeURIComponent(input)}&ia=web`;
+                redirectUrl = `/active/embed.html?url=${encodeURIComponent(searchUrl)}`;
+            }
 
-      window.location.href = redirectUrl;
-    }
+            window.location.href = redirectUrl;
+        }
 
-    function handleKeyPress(event) {
-      if (event.key === 'Enter') {
-        redirect();
-      }
-    }
-  </script>
-  <style>
-      body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          background: linear-gradient(to bottom, #000, #ff8c00); /* Black to orange background */
-          color: #ffffff; /* White text color */
-          padding: 0 2rem;
-          margin: 0;
-      }
-.nav {
-    display: flex;
-    gap: 20px; /* Space between the buttons */
-}
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                redirect();
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #000, #ff8c00); /* Black to orange background */
+            color: #ffffff; /* White text color */
+            padding: 0 2rem;
+            margin: 0;
+        }
 
-.nav-button {
-    background: none; /* No background for buttons */
-    color: #fff; /* White text color */
-    font-size: 1rem; /* Font size */
-    font-weight: 500; /* Font weight */
-    padding: 10px 15px; /* Padding around the button */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor on hover */
-    text-decoration: none; /* Remove underline from links */
-    transition: color 0.3s ease; /* Smooth color transition */
-}
+        .nav {
+            display: flex;
+            gap: 20px; /* Space between the buttons */
+            position: absolute; /* Fixed navbar at the top */
+            top: 0;
+            width: 100%;
+            background-color: #000; /* Black navbar */
+            z-index: 100;
+            justify-content: center; /* Center the navbar */
+            padding: 1rem 2rem; /* Padding for the navbar */
+        }
 
-.nav-button:hover {
-    color: rgba(255, 165, 0, 0.7); /* Change text color on hover */
-}
-      nav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem 2rem;
-          position: absolute; /* Fixed navbar at the top */
-          top: 0;
-          width: 100%;
-          background-color: #000; /* Black navbar */
-          z-index: 100;
-      }
+        .nav-button {
+            background: none; /* No background for buttons */
+            color: #fff; /* White text color */
+            font-size: 1rem; /* Font size */
+            font-weight: 500; /* Font weight */
+            padding: 10px 15px; /* Padding around the button */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Change cursor on hover */
+            text-decoration: none; /* Remove underline from links */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
 
-      .logo {
-          font-weight: 700;
-          font-size: 1.5rem;
-          color: #ffcc00; /* Bright yellow-orange */
-      }
+        .nav-button:hover {
+            color: rgba(255, 165, 0, 0.7); /* Change text color on hover */
+        }
 
-      .nav-links {
-          display: flex;
-          gap: 2rem;
-      }
+        h2 {
+            margin-top: 80px; /* Space below the navbar */
+        }
 
-      .nav-links a {
-          color: #fff; /* White text for links */
-          text-decoration: none;
-          font-size: 1rem;
-          transition: color 0.3s ease;
-      }
+        input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
 
-      .nav-links a:hover {
-          color: #ffcc00; /* Bright yellow-orange on hover */
-      }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #ffcc00, #ff7f30); /* Button gradient */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-      input {
-          width: 300px;
-          padding: 10px;
-          font-size: 16px;
-          border: none;
-          border-radius: 5px;
-          margin-top: 20px;
-      }
-
-      button {
-          margin-top: 10px;
-          padding: 10px 20px;
-          font-size: 16px;
-          background: linear-gradient(135deg, #ffcc00, #ff7f30); /* Button gradient */
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background 0.3s ease;
-      }
-
-      button:hover {
-          background: #ff7f30; /* Darker orange on hover */
-      }
-  </style>
+        button:hover {
+            background: #ff7f30; /* Darker orange on hover */
+        }
+    </style>
 </head>
+
 <body>
     <nav class="nav">
         <a href="/index" class="nav-button">Home</a>
@@ -126,11 +107,10 @@
         <a href="/apps" class="nav-button">Apps</a>
         <a href="/sports" class="nav-button">Sports</a>
     </nav>
-</header>
-    </nav>
-  
+
     <h2>Type a URL (https://...) or a Search Query</h2>
     <input type="text" id="input" onkeypress="handleKeyPress(event)" placeholder="Enter URL or search..." />
     <button onclick="redirect()">Go</button>
 </body>
+
 </html>
