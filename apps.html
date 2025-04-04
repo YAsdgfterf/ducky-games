@@ -623,25 +623,25 @@
 
     <main class="main-content">
         <div class="grid" id="game-grid">
-            <div class="game" data-name="Retro Bowl" data-url="games/retro-bowl">
-                <img src="images/retro-bowl.jpg" alt="retrobowl">
-                <div class="game-name">Retro Bowl</div>
+            <div class="game" data-name="Vs Code" data-url="https://jsitor.com">
+                <img src="images/vscode.png" alt="VsCode">
+                <div class="game-name">Vs Code</div>
             </div>
-            <div class="game" data-name="1v1LOL" data-url="/games/1v1lol">
-                <img src="images/1v1lol.jpg" alt="1v1">
-                <div class="game-name">1v1LOL</div>
+            <div class="game" data-name="Twitch" data-url="https://twitch.com">
+                <img src="images/twitch.png" alt="twitch">
+                <div class="game-name">Twitch</div>
             </div>
-            <div class="game" data-name="Slope" data-url="games/slope">
-                <img src="images/slope.jpg" alt="slope">
-                <div class="game-name">Slope</div>
+            <div class="game" data-name="Tiktok" data-url="https://tiktok.com">
+                <img src="images/tiktok.png" alt="tiktok">
+                <div class="game-name">Tiktok</div>
             </div>
-            <div class="game" data-name="Subway Surfers" data-url="games/subway-surfers">
-                <img src="images/subway-surferss.png" alt="subway">
-                <div class="game-name">Subway Surfers</div>
+            <div class="game" data-name="Chat GPT" data-url="https://chatgpt.com">
+                <img src="images/chatgpt.png" alt="GPT">
+                <div class="game-name">Chat GPT</div>
             </div>
-            <div class="game" data-name="Basket Ball Stars" data-url="games/basketball-stars">
-                <img src="images/basketball-stars.jpg" alt="BBS">
-                <div class="game-name">Basket Ball Stars</div>
+            <div class="game" data-name="Thirty Dollar Website" data-url="https://thirtydollar.website">
+                <img src="images/thirtysite.jpg" alt="tdw">
+                <div class="game-name">Thirty Dollar Website</div>
             </div>
             <!-- Additional Games -->
             <!-- Add more game entries here as needed -->
@@ -715,7 +715,7 @@
 
         function openGameInIframe(url) {
             iframeModal.style.display = 'flex'; // Show the fullscreen modal
-            gameIframe.src = `/active/embed.html?url=https://duckygamesilove.netlify.app/${url}`; // Proxied URL
+            gameIframe.src = `/active/embed.html?url=https://duckygamesilove.netlify.app/active/embed.html?url=${url}`; // Proxied URL
         }
 
         closeIframeModalBtn.addEventListener('click', function () {
